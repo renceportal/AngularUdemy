@@ -1,0 +1,115 @@
+<!-- <p 
+      [ngStyle]="{'background-color':'red'}"
+      [ngClass]="{'online': serverStatus === 'online'}"
+      >Server with ID {{serverId}} is {{ getServerStatus() }}</p> -->
+<div class="form-inline">
+  <label class="font-weight-bolder">Ng Class:</label>
+  <div class="form-group">
+    <div class="col-lg-12 pt-3">
+      <p
+      [ngStyle]="{backgroundColor: getColor() }"
+      [ngClass]="{online: serverStatus === 'online'}"
+      >Server with ID {{serverId}} is {{ getServerStatus() }}</p>
+    </div>
+  </div>
+</div>
+<div class="form-inline">
+  <label class="font-weight-bolder">View Encapsulation None:</label>
+  <div class="input-group">
+    <div class="col-lg-12 pt-3">
+      <p>styling paragrach using view encapsulation</p>
+    </div>
+  </div>
+</div>
+
+<hr class="my-4">
+
+<div class="form-group">
+  <label class="font-weight-bolder">Name:</label>
+  <input 
+    type="text"
+    class="form-control"
+    #serverNameInput>
+</div>
+<button
+  class="btn btn-primary"
+  (click)="onAddServer(serverNameInput)">Add Server</button>
+  
+<hr class="my-4">
+
+<div class="form-inline">
+  <label class="font-weight-bolder">Name:</label>
+  <div class="form-group">
+    <div class="col-lg-12">
+    <input 
+      type="text"
+      class="form-control"
+      #serverNameInputViewChild>   
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-lg-12">
+    <button
+      class="btn btn-primary"
+      (click)="onAddServerViewChild()">Add Server View Child</button>  
+    </div>
+  </div>
+</div>
+
+<hr class="my-4">
+
+<!-- <div class="form-inline">
+  <label>Inline text</label>
+  <div class="col-lg-4">
+    <div class="input-group">
+      <input 
+      type="text"
+      class="form-control"
+      #serverNameInputViewChild> 
+    </div>  
+    </div>
+  <div class="col-lg-6">
+    <div class="input-group">
+    <button
+      class="btn btn-primary"
+      (click)="onAddServerViewChild()">Add Server View Child</button>
+    </div>
+  </div>
+</div> 
+<hr>
+-->
+
+<ng-content></ng-content>
+
+<hr class="my-4">
+
+<p class="font-weight-bolder" appBasicHighlight>simple text using custom directive</p>
+<p class="font-weight-bolder" 
+  [defaultColor]="'yellow'"
+  appBetterHighlight="red"
+
+  >simple text using custom directive</p>
+<!-- 
+make sure appBetterHighlight is the same name as your directive selector ng-template
+for it to read the other input directive property like [defaultColor] 
+-->
+<hr class="my-4">
+
+<div *appUnless="false">
+  <p>show paragraph using start (*)</p>
+</div>
+
+<ng-template [appUnless]="true">
+  <p>show paragraph using property bind</p>
+</ng-template>
+
+<!-- when using ng-template you have to make your custom structural directive have property bind or [] -->
+
+<hr class="my-4">
+
+<div [ngSwitch]="value">
+  <p *ngSwitchCase="5">Value is 5</p>
+  <p *ngSwitchCase="15">Value is 15</p>
+  <p *ngSwitchCase="25">Value is 25</p>
+  <p *ngSwitchDefault>Value is default</p>
+</div>
